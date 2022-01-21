@@ -1,0 +1,33 @@
+Given an array A of N elements. Find the majority element in the array. A majority element in an array A of size N is an element that appears more than N/2 times in the array
+
+static int majorityElement(int a[], int n)
+    {
+        //Moore's Voting Algo
+        //DSA-ONE
+     int index = 0;
+     int count = 1;
+     for(int i=1;i<n;i++){
+         if(a[i]==a[index]){
+             count++;
+         }else{
+             count--;
+         }
+         if(count==0){
+             index = i;
+             count = 1;
+         }
+     }
+     int count1 = 0;
+     for(int j=0;j<n;j++){
+         if(a[j]==a[index]){
+             count1++;
+         }
+     }
+     if(count1>(n/2)){
+         return a[index];
+     }
+     else{
+         return -1;
+     }
+     
+    }
